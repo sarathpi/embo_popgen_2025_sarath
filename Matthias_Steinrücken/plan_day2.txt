@@ -8,7 +8,8 @@ This will be a mix of lecture and individual experiments. We will use the slides
 We will cover terminology, alleles and genotypes, drift and fitness.
 
 - First 100 slides of day2a.pdf
-	- with notebooks 01_drift and 02_selection insterspersed
+	- with notebooks 01_drift_exercise and 02_selection_exercise insterspersed
+	- notebooks *_solution have the solutions
 
 
 
