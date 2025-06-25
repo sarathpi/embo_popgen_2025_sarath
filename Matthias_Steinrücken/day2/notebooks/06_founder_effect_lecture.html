@@ -365,12 +365,12 @@ nr_large &lt;- 600; large_urn &lt;- c( rep(&quot;red&quot;, nr_large/2), rep(&qu
 next “generation”? What is the frequency of red balls? Remember that the
 initial frequency is 0.50.</p>
 <pre class="r"><code>length(which(sample(x=large_urn, size=nr_large, replace=TRUE)==&quot;red&quot;)) / nr_large</code></pre>
-<pre><code>## [1] 0.4933333</code></pre>
+<pre><code>## [1] 0.5016667</code></pre>
 <p>What is the <strong>expected</strong> frequency? In other words, what
 is the average frequency if we repeat the experiment many times?</p>
 <pre class="r"><code>freq_large &lt;- rep(NA, 1000); for (i in 1:length(freq_large)) freq_large[i] &lt;- length(which(sample(x=large_urn, size=nr_large, replace=TRUE)==&quot;red&quot;)) / nr_large;
 mean(freq_large)</code></pre>
-<pre><code>## [1] 0.5004</code></pre>
+<pre><code>## [1] 0.50051</code></pre>
 <p>Let’s redo this experiment with the small urn, with only 6 balls but
 with still an initial frequency of 0.50 of red balls.</p>
 <pre class="r"><code># small urn with 6 balls, 3 red and 3 blue
@@ -379,24 +379,24 @@ nr_small &lt;- 6; small_urn &lt;- c( rep(&quot;red&quot;, nr_small/2), rep(&quot
 “generation”? What is the frequency of red balls? Remember that the
 initial frequency is 0.50.</p>
 <pre class="r"><code>length(which(sample(x=small_urn, size=nr_small, replace=TRUE)==&quot;red&quot;)) / nr_small</code></pre>
-<pre><code>## [1] 0.5</code></pre>
+<pre><code>## [1] 0.1666667</code></pre>
 <p>What is the <strong>expected</strong> frequency? In other words, what
 is the average frequency if we repeat the experiment many times?</p>
 <pre class="r"><code>freq_small &lt;- rep(NA, 10000); for (i in 1:length(freq_small)) freq_small[i] &lt;- length(which(sample(x=small_urn, size=nr_small, replace=TRUE)==&quot;red&quot;)) / nr_small;
 mean(freq_small)</code></pre>
-<pre><code>## [1] 0.4998667</code></pre>
+<pre><code>## [1] 0.4957167</code></pre>
 <p>Why?</p>
 <pre class="r"><code>var(freq_large)</code></pre>
-<pre><code>## [1] 0.0004260661</code></pre>
+<pre><code>## [1] 0.0004281514</code></pre>
 <pre class="r"><code>var(freq_small)</code></pre>
-<pre><code>## [1] 0.04137634</code></pre>
+<pre><code>## [1] 0.04099964</code></pre>
 </div>
 <div id="founder-effect" class="section level1">
 <h1>(2) Founder effect</h1>
 <pre class="r"><code># ancestors (pre-colonisation)
 ancestors &lt;- rep(letters[1:20], sample(1:20,size=20,prob=20:1,replace=T))
 cat(&quot;nr of ancestors:&quot;, length(ancestors))</code></pre>
-<pre><code>## nr of ancestors: 161</code></pre>
+<pre><code>## nr of ancestors: 129</code></pre>
 <pre class="r"><code>cat(&quot;\nnr of distinct alleles:&quot;, length(unique(ancestors)))</code></pre>
 <pre><code>## 
 ## nr of distinct alleles: 20</code></pre>
@@ -405,7 +405,7 @@ cat(&quot;nr of ancestors:&quot;, length(ancestors))</code></pre>
 ## allele counts:</code></pre>
 <pre><code>## ancestors
 ##  a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q  r  s  t 
-##  3  1  6  1 14 10 11 11 17  6  3  1 10  9  7  4  6  5 16 20</code></pre>
+##  5  7  2  2 11  9  6  6 10  1 12  5  2  8 14  5  8 10  5  1</code></pre>
 <pre class="r"><code># founding event
 founders &lt;- sample(ancestors, 20)
 cat(&quot;nr of founders:&quot;, length(founders))</code></pre>
@@ -417,12 +417,12 @@ cat(&quot;nr of founders:&quot;, length(founders))</code></pre>
 <pre><code>## 
 ## allele counts:</code></pre>
 <pre><code>## founders
-## a c f h i k l m n q t 
-## 1 1 4 2 4 1 1 1 2 1 2</code></pre>
+## b c h i k m o p q r s 
+## 2 2 1 2 3 1 2 2 2 2 1</code></pre>
 <pre class="r"><code># descendants (after post-colonisation expansion)
 descendants &lt;- sample(founders, length(ancestors), replace=TRUE)
 cat(&quot;nr of descendants:&quot;, length(descendants))</code></pre>
-<pre><code>## nr of descendants: 161</code></pre>
+<pre><code>## nr of descendants: 129</code></pre>
 <pre class="r"><code>cat(&quot;\nnr of distinct alleles:&quot;, length(unique(descendants)))</code></pre>
 <pre><code>## 
 ## nr of distinct alleles: 11</code></pre>
@@ -430,8 +430,8 @@ cat(&quot;nr of descendants:&quot;, length(descendants))</code></pre>
 <pre><code>## 
 ## allele counts:</code></pre>
 <pre><code>## descendants
-##  a  c  f  h  i  k  l  m  n  q  t 
-##  5  9 35 19 25  9  9 10 16  6 18</code></pre>
+##  b  c  h  i  k  m  o  p  q  r  s 
+## 18  6  6  9 15  9 23 10 13 13  7</code></pre>
 </div>
 
 

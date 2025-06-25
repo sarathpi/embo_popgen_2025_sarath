@@ -1,6 +1,11 @@
 ---
-title: Population inferences from finite samples 
-output: html_document
+title: "Population inferences from finite samples"
+output:
+  html_document: default
+  pdf_document: default
+editor_options:
+  markdown:
+    wrap: sentence
 ---
 
 We sequenced several genomes of bears and assigned each individual genotype.
@@ -20,14 +25,11 @@ We can imagine to randomly sample one allele from the population and each time t
 
 This is a set of Bernoulli trials and we can use of Binomial distribution as likelihood function.
 
-The Binomial likelihood is
-\begin{equation}
+The Binomial likelihood is \begin{equation}
      P(k|p,n) = ( \genfrac{}{}{0pt}{}{n}{k} ) p^k(1-p)^{n-k}
-\end{equation}
-where $k$ is the number of successes (i.e. the event of sampling a G), $p$ is the proportion of $G$ alleles we have (i.e. the probability of a success), and $n$ is the number of alleles we sample.
+\end{equation} where $k$ is the number of successes (i.e. the event of sampling a G), $p$ is the proportion of $G$ alleles we have (i.e. the probability of a success), and $n$ is the number of alleles we sample.
 
-Recall that
-\begin{equation}
+Recall that \begin{equation}
     (\genfrac{}{}{0pt}{}{n}{k}) = \frac{n!}{k!(n-k)!}
 \end{equation}
 
@@ -51,11 +53,10 @@ Are certain values of $p$ more likely to occur without observing the data?
 
 If that it is not the case, can we use the Beta distribution to generate a non-informative prior?
 
-We can choose $Beta(\alpha,\beta)$, which is defined as
-\begin{equation}
+We can choose $Beta(\alpha,\beta)$, which is defined as \begin{equation}
     P(p) = \frac{1}{B(\alpha,\beta)} p^{\alpha-1}(1-p)^{\beta-1}
-\end{equation}
-where $\frac{1}{B(\alpha,\beta)}$ is simply a normalization term which does not depend on $p$. Furthermore, for $\alpha = \beta = 1$, this is the uniform distribution, and thus yields a non-informative prior.
+\end{equation} where $\frac{1}{B(\alpha,\beta)}$ is simply a normalization term which does not depend on $p$.
+Furthermore, for $\alpha = \beta = 1$, this is the uniform distribution, and thus yields a non-informative prior.
 
 The full model can be expressed as $P(p|k,n) \propto P(k|p,n)P(p)$.
 
@@ -72,18 +73,21 @@ What are $k$ and $n$?
 
 $n$ is the number of alleles we sample and $k$ is the occurrence of allele $G$ in our sample.
 
-__A)__ 
+**A)**
 
-Plot the posterior probability, assuming a uniform prior (alpha = beta = 1). Then calculate the maximum a posteriori value, 95\% credible intervals, and notable quantiles. 
+Plot the posterior probability, assuming a uniform prior (alpha = beta = 1).
+Then calculate the maximum a posteriori value, 95% credible intervals, and notable quantiles.
 
 What happens to the distribution if we have only 10 samples (with the sample allele frequency of 0.20)?
 
 ```{r}
-#...
+n <-200
+k <-40
 ```
 
 We can think of a more informative prior.
-The genome-wide distribution of allele frequencies for human populations as a particular shape. This is called a site frequency spectrum (SFS) or allele frequency spectrum (AFS).
+The genome-wide distribution of allele frequencies for human populations as a particular shape.
+This is called a site frequency spectrum (SFS) or allele frequency spectrum (AFS).
 
 ![](Images/AFS.png)
 
@@ -94,13 +98,12 @@ We can have another view at it by plotting the minor allele counts (MAC) distrib
 Does this distribution fit with a uniform prior?
 Can we use a conjugate (Beta) function to model this distribution?
 
-Also, we don't know _a priori_ whether the allele we are interested in is the minor allele.
+Also, we don't know *a priori* whether the allele we are interested in is the minor allele.
 Therefore a prior distribution with more density at both low and high frequencies might be more appropriate.
 
-__B)__
+**B)**
 
-Recalculate the posterior distribution of $p$ using an informative prior (make your own
-choices regarding the parameter for the Beta distribution) both in the case of 100 and 10 samples.
+Recalculate the posterior distribution of $p$ using an informative prior (make your own choices regarding the parameter for the Beta distribution) both in the case of 100 and 10 samples.
 
 Discuss how these results compare to the previous ones obtained in point A.
 
@@ -108,11 +111,11 @@ Discuss how these results compare to the previous ones obtained in point A.
 #...
 ```
 
-__C)__ (bonus)
+**C)** (bonus)
 
-Calculate the Bayes factor for a model with $p<=0.5$ vs a model with $p>0.5$. Note that these models are equally probable a priori.
+Calculate the Bayes factor for a model with $p<=0.5$ vs a model with $p>0.5$.
+Note that these models are equally probable a priori.
 
 ```{r}
 #...
 ```
-
