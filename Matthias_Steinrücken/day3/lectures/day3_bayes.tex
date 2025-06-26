@@ -332,7 +332,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}\frametitle{Bayesian vs. Frequentist:}
 	\begin{itemize}
-		\item Bayesian approaches ``proper'' probability distributions the parameters rather than deriving a point estimate.
+		\item Bayesian approaches yield ``proper'' probability distributions the parameters rather than deriving a point estimate.
 		\item A probability is assigned to a hypothesis rather than a hypothesis is tested.
 		\item Bayesian approaches ``accept'' the null hypothesis rather than ``fail to reject'' it.
 		\item Parsimony imposed in model choice rather than correcting for multiple tests.
@@ -422,10 +422,13 @@
 \begin{frame}\frametitle{The likelihood approach}
 	\begin{block}{}
 		\begin{itemize}
-			\item $Y$ is a random variable.
+			\item $Y$ is a random variable (data).
 			\item $f(y|\theta)$ is a probability distribution (called the likelihood) representing the sampling model for the observed data $y$ given unknown parameter(s) $\theta$.
 			\item $\int f (y|\theta)d\theta$ is not necessarily $= 1$ or even finite.
-			\item It is possible to find the value of $\theta$ that maximizes the likelihood function: We can calculate a maximum likelihood estimate (MLE) for $\theta$, as: $\hat\theta = \text{argmax}_\theta f (y|\theta)$.
+			\item It is possible to find the value of $\theta$ that maximizes the likelihood function: We can calculate a maximum likelihood estimate (MLE) for $\theta$, as:
+			\begin{equation}
+				\hat\theta = \text{argmax}_\theta f (y|\theta)				
+			\end{equation}
 		\end{itemize}
 	\end{block}
 \end{frame}
@@ -441,8 +444,8 @@
 		\end{equation}
 	\end{block}
 	\begin{itemize}
-		\item $\theta$ is not a fixed parameter but a random quantity with prior distribution $\pi(\theta)$.
-		\item $p(\theta|y) $is the posterior probability distribution of $\theta$.
+		\item $\theta$ is not a fixed parameter but a random quantity with \textbf{prior} distribution $\pi(\theta)$.
+		\item $p(\theta|y) $is the \textbf{posterior} probability distribution of $\theta$.
 		\item $\int p(\theta|y) d\theta = 1$
 	\end{itemize}
 \end{frame}
@@ -530,7 +533,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}\frametitle{Save the frogs with a Normal-Normal model!}
 	\begin{block}{Infected frogs (observed and ``believed'' a priori)}
-		Assume that $y = 6$, $\sigma = 1$, $\mu = 2$ and $\tau = 1$.
+		If data $y = 6$, $\sigma = 1$, and prior $\mu = 2$ and $\tau = 1$.
 	\end{block}
 	\vspace{-1ex}
 	\begin{equation}
