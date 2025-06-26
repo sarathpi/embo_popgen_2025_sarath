@@ -6,7 +6,7 @@ output: html_document
 <style>
 /* Restrict content width and use monospace font if needed */
 body {
-  max-width: 80ch; /* 80 characters */
+  max-width: 60ch; /* 80 characters */
   margin: auto;
   font-family: Arial, sans-serif; /* or use monospace for exact char width */
   line-height: 1.6;
